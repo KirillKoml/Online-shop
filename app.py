@@ -14,7 +14,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.send_response(200) # Отправка кода ответа
         self.send_header("Content-type", "text/html") # Отправка типа данных, который будет передаваться
         self.end_headers()
-        with open("app/contact.html", "r", encoding="utf-8") as file:
+        with open("catalog/templates/contact.html", "r", encoding="utf-8") as file:
             app = file.read()# Завершение формирования заголовков ответа
         self.wfile.write(bytes(app, "utf-8")) # Тело ответа
 
