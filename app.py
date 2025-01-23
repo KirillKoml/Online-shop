@@ -1,22 +1,24 @@
 # Импорт встроенной библиотеки для работы веб-сервера
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
 
 # Для начала определим настройки запуска
-hostName = "localhost" # Адрес для доступа по сети
-serverPort = 8080 # Порт для доступа по сети
+hostName = "localhost"  # Адрес для доступа по сети
+serverPort = 8080  # Порт для доступа по сети
 """
         Специальный класс, который отвечает за
         обработку входящих запросов от клиентов
 """
+
+
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200) # Отправка кода ответа
-        self.send_header("Content-type", "text/html") # Отправка типа данных, который будет передаваться
+        self.send_response(200)  # Отправка кода ответа
+        self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
         self.end_headers()
         with open("catalog/templates/contact.html", "r", encoding="utf-8") as file:
-            app = file.read()# Завершение формирования заголовков ответа
-        self.wfile.write(bytes(app, "utf-8")) # Тело ответа
+            app = file.read()  # Завершение формирования заголовков ответа
+        self.wfile.write(bytes(app, "utf-8"))  # Тело ответа
+
 
 """
             Метод для обработки входящих GET-запросов
