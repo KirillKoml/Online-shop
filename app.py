@@ -13,7 +13,9 @@ serverPort = 8080  # Порт для доступа по сети
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)  # Отправка кода ответа
-        self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
+        self.send_header(
+            "Content-type", "text/html"
+        )  # Отправка типа данных, который будет передаваться
         self.end_headers()
         with open("catalog/templates/contact.html", "r", encoding="utf-8") as file:
             app = file.read()  # Завершение формирования заголовков ответа
