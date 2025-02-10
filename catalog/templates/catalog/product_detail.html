@@ -8,9 +8,9 @@
                 <div class="card-header">
                     <img src="{{ products.image | media_filter}}">
                     <h4 class="my-0 font-weight-normal">{{ product.category }}</h4>
-                    <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
-                    <h4 class="my-0 font-weight-normal">{{ product.description | truncatechars:100 }}</h4>
-                    <h4 class="my-0 font-weight-normal">Цена {{ product.price }}$</h4>
+                    <h4 class="my-0 font-weight-normal">Название: {{ product.name }}</h4>
+                    <h4 class="my-0 font-weight-normal">Описание: {{ product.description}}</h4>
+                    <h4 class="my-0 font-weight-normal">Цена: {{ product.price }}$</h4>
                 </div>
                 <div class="card-body">
 
