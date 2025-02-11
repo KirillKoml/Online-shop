@@ -51,7 +51,10 @@ class Product(models.Model):
         related_name="products",
     )
     price = models.IntegerField(
-        blank=True, null=True, verbose_name="Цена", help_text="Укажите цену"
+        blank=True,
+        null=True,
+        verbose_name="Цена",
+        help_text="Укажите цену"
     )
     data_bd = models.DateField(
         blank=True,
@@ -65,13 +68,10 @@ class Product(models.Model):
         verbose_name="дата изменения",
         help_text="укажите дату изменения",
     )
-
     views_counter = models.PositiveIntegerField(
-        default=0,
         verbose_name="Количество просмотров",
         help_text="укажите количество просмотров товара",
-        blank=True,
-        null=True,
+        default=0,
     )
 
     class Mete:

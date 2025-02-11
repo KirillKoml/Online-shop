@@ -7,10 +7,11 @@
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
                     <img src="{{ products.image | media_filter}}">
-                    <h4 class="my-0 font-weight-normal">{{ product.category }}</h4>
-                    <h4 class="my-0 font-weight-normal">Название: {{ product.name }}</h4>
-                    <h4 class="my-0 font-weight-normal">Описание: {{ product.description}}</h4>
-                    <h4 class="my-0 font-weight-normal">Цена: {{ product.price }}$</h4>
+                    <h4 class="my-0 font-weight-normal">{{ object.category }}</h4>
+                    <h4 class="my-0 font-weight-normal">Название: {{ object.name }}</h4>
+                    <h4 class="my-0 font-weight-normal">Описание: {{ object.description}}</h4>
+                    <h4 class="my-0 font-weight-normal">Цена: {{ object.price }}$</h4>
+                    <h4 class="my-0 font-weight-normal">Просмотров: {{ object.views_counter }}</h4>
                 </div>
                 <div class="card-body">
 
