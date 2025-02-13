@@ -42,7 +42,7 @@ class Blog(models.Model):
 
     class Mete:
         verbose_name = "Заметка"
-        verbose_description = "Заметки"
+        verbose_name_plural = "Заметки"
         ordering = ["name", "description"]
 
     def __str__(self):

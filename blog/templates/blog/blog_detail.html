@@ -10,14 +10,13 @@
                     <h4 class="my-0 font-weight-normal">{{ object.category }}</h4>
                     <h4 class="my-0 font-weight-normal">Название: {{ object.name }}</h4>
                     <h4 class="my-0 font-weight-normal">Описание: {{ object.description}}</h4>
-                    <h4 class="my-0 font-weight-normal">Цена: {{ object.price }}$</h4>
                     <h4 class="my-0 font-weight-normal">Просмотров: {{ object.views_counter }}</h4>
                 </div>
                 <div class="card-body">
+
                     </ul>
-                    <a type="submit" class=" btn btn-lg btn-block btn-outline-primary" href="{#}">Купить</a>
-                    <a type="submit" class="btn btn-lg btn-block btn-outline-primary"href="{#}">Редактировать</a>
-                    <a type="submit" class="btn btn-lg btn-block btn-outline-primary"href="{#}">Удалить</a>
+                    <a type="submit" class="btn btn-lg btn-block btn-outline-primary"href="{% url 'blog:blog_update' blog.pk %}">Редактировать</a>
+                    <a type="submit" class="btn btn-lg btn-block btn-outline-primary"href="{% url 'blog:blog_delete' blog.pk %}">Удалить</a>
                 </div>
             </div>
         </div>
