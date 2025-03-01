@@ -13,9 +13,12 @@ class StyleFormMixin:
             else:
                 field.widget.attrs['class'] = "form-control"
 
+
+# Список запрещённых слов в тексте продукта. Включает регистрозависимые и нерегистрозависимые слова.
 forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
                    'радар', 'Казино', 'Криптовалюта', 'Крипта', 'Биржа', 'Дешево', 'Бесплатно', 'Обман', 'Полиция',
-                   'Радар',]
+                   'Радар', ]
+
 
 class ProductForm(StyleFormMixin, ModelForm):
     class Meta:
@@ -35,7 +38,6 @@ class ProductForm(StyleFormMixin, ModelForm):
             if word in cleaned_data:
                 raise forms.ValidationError('В тексте продукта есть запрещённое слово')
         return cleaned_data
-
 
     def clean_price(self):
         cleaned_data = self.cleaned_data['price']
