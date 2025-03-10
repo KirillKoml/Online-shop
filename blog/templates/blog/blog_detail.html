@@ -15,8 +15,11 @@
                 <div class="card-body">
 
                     </ul>
+                    {% if user.is_authenticated %}
                     <a type="submit" class="btn btn-lg btn-block btn-outline-primary"href="{% url 'blog:blog_update' blog.pk %}">Редактировать</a>
                     <a type="submit" class="btn btn-lg btn-block btn-outline-primary"href="{% url 'blog:blog_delete' blog.pk %}">Удалить</a>
+                    {% else %}
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -4,7 +4,17 @@
     <nav class="ms-5">
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_list' %}">Каталог</a>
         <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить товар</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_list' %}">Блог</a>
+                {% if user.is_authenticated %}
+        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить товар</a>
+        <a class="p-2 btn btn-outline-primary" href="/mailing/">Рассылки</a>
+        <a class="p-2 btn btn-outline-primary" href="/mailing/message/">Сообщения для рассылки</a>
+        <a class="p-2 btn btn-outline-primary" href="/mailing/customer/">Клиенты сервиса</a>
+        <a class="p-2 btn btn-outline-primary" href="/user/logout/">Выход</a>
+        <a class="p-2 btn btn-outline-primary" href="/user/profile/">Профиль</a>
+        {% else %}
+        <a class="p-2 btn btn-outline-primary" href="/user/login/">Вход</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'login:register' %}">Регистрация</a>
+        {% endif %}
     </nav>
 </div>
