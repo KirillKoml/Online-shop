@@ -1,5 +1,7 @@
 from django.db import models
 
+from login.models import User
+
 
 class Category(models.Model):
     name = models.CharField(
@@ -51,8 +53,6 @@ class Product(models.Model):
         related_name="products",
     )
     price = models.IntegerField(
-        blank=True,
-        null=True,
         verbose_name="Цена",
         help_text="Укажите цену"
     )
@@ -73,6 +73,9 @@ class Product(models.Model):
         help_text="укажите количество просмотров товара",
         default=0,
     )
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Автор', null=True, blank=True,
+                               related_name='login', )
+    sign_publication_product = models.BooleanField(default=False, verbose_name='Признак публикации продукта', )
 
     class Mete:
         verbose_name = "Товар"
