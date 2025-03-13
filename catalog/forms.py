@@ -14,7 +14,6 @@ class StyleFormMixin:
                 field.widget.attrs['class'] = "form-control"
 
 
-# Список запрещённых слов в тексте продукта. Включает регистрозависимые и нерегистрозависимые слова.
 forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
                    'радар', 'Казино', 'Криптовалюта', 'Крипта', 'Биржа', 'Дешево', 'Бесплатно', 'Обман', 'Полиция',
                    'Радар', ]
@@ -23,7 +22,7 @@ forbidden_words = ['казино', 'криптовалюта', 'крипта', '
 class ProductForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Product
-        exclude = ('created_at', 'updated_at', 'views_counter',)
+        exclude = ('created_at', 'updated_at', 'author', 'sing_publication_product',)
 
     def clean_name(self):
         cleaned_data = self.cleaned_data['name']
@@ -44,5 +43,24 @@ class ProductForm(StyleFormMixin, ModelForm):
 
         if cleaned_data <= 0:
             raise forms.ValidationError('Цена не может быть нулевой или отрицательной')
+
+        return cleaned_data
+
+
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ('sign_publication_product', 'description', 'category',)
+
+    def clean_description(self):
+        cleaned_data = self.cleaned_data['description']
+
+        # Кортеж запрещенных слов
+        forbidden_words = ('казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
+                           'радар')
+
+        # Проверю есть ли в названии запрещенные слова
+        if cleaned_data in forbidden_words:
+            raise forms.ValidationError('В описании продукта есть запрещённое слово')
 
         return cleaned_data
