@@ -77,13 +77,21 @@ class Product(models.Model):
                                related_name='login', )
     sign_publication_product = models.BooleanField(default=False, verbose_name='Признак публикации продукта', )
 
+    def __str__(self):
+        return self.name
+
+
     class Mete:
         verbose_name = "Товар"
         verbose_description = "Товара"
         ordering = ["name", "description"]
+        permissions = [
+            ('may_cancel_publication_product', 'may cancel publication product'),
+            ('can_change_description_product', 'can change description product'),
+            ('can_change_category_product', 'can change category product')
+        ]
 
-    def __str__(self):
-        return self.name
+
 
 
 class Contact(models.Model):
