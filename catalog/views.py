@@ -4,8 +4,8 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
 from catalog.forms import ProductForm, ProductModeratorForm
-from catalog.models import Product, Contact
-from catalog.services import get_product_from_cache
+from catalog.models import Product, Contact, Category
+from catalog.services import get_product_from_cache, get_category_from_cache
 
 
 class ProductListView(ListView):
@@ -79,7 +79,18 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     redirect_field_name = "/"
 
 
+class CategoryListView(ListView):
+    model = Category
 
+    def get_queryset(self):
+        return get_category_from_cache()
+
+class CategoryDetailView(DetailView):
+    model = Category
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = Product.objects.filter(category=self.object)
+        return context
 
 
 class ContactListView(ListView):

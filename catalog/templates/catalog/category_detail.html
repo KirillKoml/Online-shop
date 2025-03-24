@@ -1,0 +1,22 @@
+{% extends 'catalog/home.html' %}
+{% load tags %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        {% for products in object.products.all %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                        <h4 class="my-0 font-weight-normal"> {{ products.name}} </h4>
+                        <h4 class="my-0 font-weight-normal">Название: {{ object.name }}</h4>
+                        </div>
+                    <div class="card-body">
+                        <a type="submit" class=" btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_detail' products.pk %}">Просмотр</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
