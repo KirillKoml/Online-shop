@@ -16,12 +16,12 @@ class Category(models.Model):
         null=True,
     )
 
+    def __str__(self):
+        return f"{self.name}"
+
     class Mete:
         verbose_name = "Товар"
         verbose_description = "Товара"
-
-    def __str__(self):
-        return self.name
 
 
 class Product(models.Model):
@@ -80,7 +80,6 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-
     class Mete:
         verbose_name = "Товар"
         verbose_description = "Товара"
@@ -90,8 +89,6 @@ class Product(models.Model):
             ('can_change_description_product', 'can change description product'),
             ('can_change_category_product', 'can change category product')
         ]
-
-
 
 
 class Contact(models.Model):
